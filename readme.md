@@ -23,3 +23,5 @@
 ## Note to self:
 
 `pip3 freeze > requirements.txt`
+
+![Intro Screen](images/book_cover.png)

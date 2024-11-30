@@ -8,9 +8,8 @@ def title_sequence():
     clear_screen()
     print(ascii_txt('Misthaven', 'cyan'))
     print(ascii_txt('An Interactive Fiction Experience', 'yellow', 'ogre'))
-    print(ascii_txt('By Vera & Nick', 'cyan', 'ogre'))
+    print(ascii_txt('By Nick Golebiewski', 'cyan', 'ogre'))
     input("Press enter to continue > ")
-
 
 def player_setup():
     """Set your player's name and get the instructions, returns a Player object"""
@@ -25,7 +24,6 @@ def player_setup():
     input("> ")
     clear_screen()
     return player
-
 
 def engine(player):
     """The Choose Your Own Adventure Game Engine, takes in a Player object as an argument"""
@@ -68,7 +66,6 @@ def engine(player):
     input("Press enter to continue > ")
     clear_screen()
             
-            
 def game_over_default(player):
     """Game Over, gives player an option to restart the game loop"""
     print(ascii_txt('Game Over', 'red'))
@@ -80,13 +77,11 @@ def game_over_default(player):
         game_over_default(player)
     exit(0)
 
-
 def main():
     title_sequence()
     player = player_setup()
     engine(player)
     game_over_default(player)
-    
     
 if __name__ == "__main__":
     main()
