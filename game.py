@@ -1,5 +1,6 @@
 # game.py
 import re
+import csv
 
 scenario_index = dict()
 keyword_index = list()
@@ -47,28 +48,54 @@ class Scenario:
 
 
 # Read CSV with scenarios, and loop over them to create scenarios and keep track of them in the scenario_index
-# def create_scenarios_from_csv(file_name):
-# TKTKTKTK
-dynamic_name = 'intro'
-scenario_index[dynamic_name] = Scenario('Intro', 'Welcome to Misthaven\nThis is a medieval city, and the streets are bustling.', '1. Begin the ADVENTURE or 2. Call it QUITS', 'Welcome to Misthaven')
-scenario_index['quits'] = Scenario('Quist', 'You quit, game over', '1. start over or 2. goodbye', 'Game Over', color = 'red')
-scenario_index['adventure'] = Scenario('Adventure', "You're running down the street of Misthaven, away from the cops. They're in hot pursuit and want to take you back to the orphanage.", 'Do you want to run to the TAVERN or jump into a moving horse driven CART?', 'The Pursuit...')
-scenario_index['cart'] = Scenario(  'Cart', 
-                                    "You make it!\nYou jump into the cart and hide under a pile of hay. After what seems like hours, the cart stops and you hop out. You're no longer in the city and out in the farmlands...", 
-                                    'TBD...', 
-                                    'The Cart...',
-                                    score=20)
+
+### TESTS #####
+# dynamic_name = 'intro'
+# scenario_index[dynamic_name] = Scenario('Intro', 'Welcome to Misthaven\nThis is a medieval city, and the streets are bustling.', '1. Begin the ADVENTURE or 2. Call it QUITS', 'Welcome to Misthaven')
+# scenario_index['quits'] = Scenario('Quist', 'You quit, game over', '1. start over or 2. goodbye', 'Game Over', color = 'red')
+# scenario_index['adventure'] = Scenario('Adventure', "You're running down the street of Misthaven, away from the cops. They're in hot pursuit and want to take you back to the orphanage.", 'Do you want to run to the TAVERN or jump into a moving horse driven CART?', 'The Pursuit...')
+# scenario_index['cart'] = Scenario(  'Cart', 
+#                                     "You make it!\nYou jump into the cart and hide under a pile of hay. After what seems like hours, the cart stops and you hop out. You're no longer in the city and out in the farmlands...", 
+#                                     'TBD...', 
+#                                     'The Cart...',
+#                                     score=20)
+
+######## Set of print tests
+# print(scenario_index['intro'].get_all())
+# print(scenario_index['intro'].get_fancy_text())
+# print(keyword_index)
+# print(scenario_index['quits'].get_all())
+
 
 def check_keyword_links(object_index, keywords):
     # Function to make sure there are no loose ends. Each keyword should point to an object for the story to continue.
     # Sort of like a tree made up of nodes...
     pass
 
-# # Set of tests
-# print(scenario_index['intro'].get_all())
-# print(scenario_index['intro'].get_fancy_text())
-# print(keyword_index)
-# print(scenario_index['quits'].get_all())
+def csv_to_scenarios(csv_file):
+    print('reading csv')
+    with open(csv_file) as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            dynamic_name = row['name'].lower()
+            print(dynamic_name)
+            scenario_index[dynamic_name] = Scenario(
+                name=row['name'],
+                description=row["description"].lower(),  
+                options_text=row["options_text"], 
+                fancy_text=row["fancy_text"],
+                color=row.get('color', 'cyan') if row.get('color') != "" else 'cyan',  # Check for empty string
+                font=row.get('font', 'ogre') if row.get('font') != "" else 'ogre', # Check for empty string
+                score=int(row.get('score', 0)),
+                game_over=row.get('game_over', 'FALSE').upper() == 'TRUE',
+                game_over_text=row.get("game_over_text", ""),
+                special_function=row.get('special_function', None),
+            )
+            print(scenario_index[dynamic_name].get_all())
+
+# Populate the Scenarios from the CSV!!!
+csv_to_scenarios('data.csv')
+    
 
 class Character:
     def __init__(self, name):

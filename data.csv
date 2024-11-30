@@ -1,0 +1,4 @@
+name,title,description,options_text,fancy_text,color,font,score,game_over,game_over_text,special_function
+Intro,Welcome to the game: Misthaven.,This is a choose your own adventure game\nHere are the rules...,Begin the ADVENTURE or call it QUITS,Welcome to the game: Misthaven.,,,1,,,
+Adventure,The pursuit...,"You're running down the street of Misthaven, away from the cops. They're in hot pursuit and want to take you back to the orphanage.",Do you want to run to and hide inside the TAVERN or jump into a moving horse driven CART?,The pursuit...,,,2,,,
+Quits,You Quit...,Game Over,QUIT,You Quit...,red,,0,TRUE,You quit,

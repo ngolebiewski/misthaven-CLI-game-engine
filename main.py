@@ -78,6 +78,7 @@ def game_over_default(player):
     exit(0)
 
 def main():
+    game.csv_to_scenarios('data.csv')
     title_sequence()
     player = player_setup()
     engine(player)

@@ -9,6 +9,7 @@
     2. Activate
         - Mac/Linux: `$ source venv/bin/activate`
         - Windows Power Shell (IDK, haven't used Windows in over a decade): `PS C:\> venv\Scripts\Activate.ps1`
+    * more help: https://docs.python.org/3/library/venv.html#creating-virtual-environments
 3. Install required packages via `pip3 install -r requirements.txt`
 4. Run program on CLI in Terminal, etc.: `python3 main.py`
 

@@ -2,7 +2,7 @@
 from pyfiglet import Figlet
 import os
 
-"""COLORS dict: These are color codes to use in terminal to make the text different colors"""
+# COLORS dictionary: These are color codes to use in terminal to make the text different colors
 COLORS= {
     "reset": "\033[0m",
     "bold": "\033[1m",
