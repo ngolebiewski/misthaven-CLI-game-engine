@@ -2,3 +2,6 @@ name,title,description,options_text,fancy_text,color,font,score,game_over,game_o
 Intro,Welcome to the game: Misthaven.,This is a choose your own adventure game\nHere are the rules...,Begin the ADVENTURE or call it QUITS,Welcome to the game: Misthaven.,,,1,,,
 Adventure,The pursuit...,"You're running down the street of Misthaven, away from the cops. They're in hot pursuit and want to take you back to the orphanage.",Do you want to run to and hide inside the TAVERN or jump into a moving horse driven CART?,The pursuit...,,,2,,,
 Quits,You Quit...,Game Over,QUIT,You Quit...,red,,0,TRUE,You quit,
+Cart,The Cart...,"You make it!\nYou jump into the cart and hide under a pile of hay. After what seems like hours, the cart stops and you hop out. You're no longer in the city and out in the farmlands...",Hideout in the BARN or start walking back to the city on the dusty ROAD,The Cart...,,,20,,,
+Barn,Inside the barn.,"The door to the barn isn't locked and you slip inside. The smell of hay is strong, and there are a couple horses inside. ","Take a NAP in the hay, or take a HORSE",Inside the barn.,,,5,,,
+Tavern,The Wyrmm Tavern,The tavern is loud and you're the youngest one here by far...,,The Wyrmm Tavern,,,1,,,

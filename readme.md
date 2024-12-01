@@ -16,6 +16,11 @@
 ## Concept
 - Import adventure from a CSV file. Options are in ALL CAPS and link the scenarios together. 
 - TKTK
+
+## How to make
+- See CSV file for template
+- Must include a row with name "Intro" to kick off the story
+- 
 	
 ## See the Docs
 

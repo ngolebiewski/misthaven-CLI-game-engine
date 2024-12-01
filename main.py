@@ -2,13 +2,16 @@
 from colors import COLORS, ascii_txt, clear_screen
 import game
 
+#set this to your game title
+game_title = 'Misthaven'
 
+#should refactor functions to return the sets of strings, rather than print
 def title_sequence():
     """AKA Book Cover"""
     clear_screen()
-    print(ascii_txt('Misthaven', 'cyan'))
+    print(ascii_txt(game_title, 'cyan'))
     print(ascii_txt('An Interactive Fiction Experience', 'yellow', 'ogre'))
-    print(ascii_txt('By Nick Golebiewski', 'cyan', 'ogre'))
+    print(ascii_txt('By Vera and Nick Golebiewski', 'cyan', 'ogre'))
     input("Press enter to continue > ")
 
 def player_setup():
@@ -58,10 +61,13 @@ def engine(player):
             break
         if not valid_keyword:
         # if self.game_over is true, read that stuff IMPORTANT! TKTK
+            if response.lower() == 'help':
+                keywords = ", ".join(map(lambda x: f"<{x}>", scene.forks))
+                print(f"type <QUIT> to exit. Or one of the Keywords: {keywords} to continue")
             if response.lower() == 'quit':
                 game_over = True
             else:
-                print(f"try either 'quit', 'help', or one of these Keywords: {scene.forks}")
+                # print(f"try either 'quit', 'help', or one of these Keywords: {scene.forks}")
                 input("Press enter to continue > ")
     input("Press enter to continue > ")
     clear_screen()
@@ -78,7 +84,6 @@ def game_over_default(player):
     exit(0)
 
 def main():
-    game.csv_to_scenarios('data.csv')
     title_sequence()
     player = player_setup()
     engine(player)

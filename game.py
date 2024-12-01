@@ -40,6 +40,11 @@ class Scenario:
             'game_over_text': self.game_over_text
         }
 
+    def unescape_line_breaks(self):
+        # When importing data from CSV, escape characters are escaped, and this fixes line breaks
+        self.description = re.sub(r'\\n', '\n', self.description)
+        self.options_text = re.sub(r'\\n', '\n', self.options_text)
+
     def get_fancy_text(self):
         return (self.fancy_text, self.color, self.font)
     
@@ -47,7 +52,7 @@ class Scenario:
         pass
 
 
-# Read CSV with scenarios, and loop over them to create scenarios and keep track of them in the scenario_index
+
 
 ### TESTS #####
 # dynamic_name = 'intro'
@@ -72,8 +77,11 @@ def check_keyword_links(object_index, keywords):
     # Sort of like a tree made up of nodes...
     pass
 
-def csv_to_scenarios(csv_file):
-    print('reading csv')
+def unescape_line_break(text):
+    return re.sub(r'\\n', '\n', text)
+    
+def csv_to_scenarios(csv_file, default_font = 'ogre'):
+    """Read CSV with scenarios, and loop over them to create scenarios and keep track of them in the scenario_index. (optional) Choose default pyfiglet font."""
     with open(csv_file) as file:
         reader = csv.DictReader(file)
         for row in reader:
@@ -81,21 +89,23 @@ def csv_to_scenarios(csv_file):
             print(dynamic_name)
             scenario_index[dynamic_name] = Scenario(
                 name=row['name'],
-                description=row["description"].lower(),  
+                description=row["description"],  
                 options_text=row["options_text"], 
                 fancy_text=row["fancy_text"],
-                color=row.get('color', 'cyan') if row.get('color') != "" else 'cyan',  # Check for empty string
+                color=row.get('color', 'cyan') if row.get('color') != "" else default_font,  # Check for empty string
                 font=row.get('font', 'ogre') if row.get('font') != "" else 'ogre', # Check for empty string
                 score=int(row.get('score', 0)),
-                game_over=row.get('game_over', 'FALSE').upper() == 'TRUE',
+                game_over=row.get('game_over', 'False') == 'True',
                 game_over_text=row.get("game_over_text", ""),
                 special_function=row.get('special_function', None),
             )
+            scenario_index[dynamic_name].unescape_line_breaks()
             print(scenario_index[dynamic_name].get_all())
 
 # Populate the Scenarios from the CSV!!!
 csv_to_scenarios('data.csv')
     
+print(unescape_line_break('This is a choose your own adventure game\\nHere are the rules...'))
 
 class Character:
     def __init__(self, name):
