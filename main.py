@@ -2,6 +2,9 @@
 from colors import COLORS, ascii_txt, clear_screen
 import game
 
+# About: A CLI Interactive Game Engine by Nick Golebiewski. 
+# November/December 2024
+
 #set this to your game title
 game_title = 'Misthaven'
 
