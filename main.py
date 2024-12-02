@@ -31,6 +31,7 @@ def player_setup():
     clear_screen()
     return player
 
+# TODO: Break engine up into discrete parts/either functions or as an object with methods, TBD
 def engine(player):
     """The Choose Your Own Adventure Game Engine, takes in a Player object as an argument"""
     scene = game.scenario_index['intro']

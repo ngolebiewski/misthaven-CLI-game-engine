@@ -22,8 +22,9 @@ class Scenario:
     @staticmethod 
     def parse_forks(options_text):
         keywords = re.findall(r"\b[A-Z]+\b", options_text)
-        for word in keywords:
-            keyword_index.append(word)
+        keyword_index.extend([word for word in keywords])
+        # for word in keywords:
+        #     keyword_index.append(word)
         return keywords
     
     def get_all(self):
@@ -106,6 +107,7 @@ def csv_to_scenarios(csv_file, default_font = 'ogre'):
 csv_to_scenarios('data.csv')
     
 print(unescape_line_break('This is a choose your own adventure game\\nHere are the rules...'))
+print(keyword_index)
 
 class Character:
     def __init__(self, name):
