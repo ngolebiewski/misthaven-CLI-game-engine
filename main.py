@@ -1,4 +1,3 @@
-
 from colors import COLORS, ascii_txt, clear_screen
 import game
 
@@ -8,7 +7,7 @@ import game
 #set this to your game title
 game_title = 'Misthaven'
 
-#should refactor functions to return the sets of strings, rather than print
+# TODO: Refator functions to return the sets of strings, rather than print as side effect
 def title_sequence():
     """AKA Book Cover"""
     clear_screen()
@@ -38,14 +37,14 @@ def engine(player):
     game_over = False
     while not game_over:
         clear_screen()
-        #should have some keywords like help, quit, status...
+        # should have some keywords like help, quit, status...
         
-        # Change fancy text to title and make mandatory
+        # TODO: Change fancy text to title and make mandatory
         if scene.get_fancy_text:
             print(ascii_txt(*scene.get_fancy_text()))
         print(scene.description)
         # Add a special function that defaults to a function that is a pass, that can take the name of a special set of insturctions.
-            #i.e. a fight module, or a thing to lose/gain health, perhaps even add a new keywork? I don't know.
+            #i.e. a fight module, or a thing to lose/gain health, perhaps even add a new keyword? I don't know.
         print(ascii_txt(f"Options", 'yellow', "Mini"))
         print(scene.options_text)
         

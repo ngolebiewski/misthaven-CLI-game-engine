@@ -2,6 +2,8 @@
 import re
 import csv
 
+#google api to sheets.
+
 scenario_index = dict()
 keyword_index = list()
 
@@ -78,9 +80,14 @@ def check_keyword_links(object_index, keywords):
     # Sort of like a tree made up of nodes...
     pass
 
-def unescape_line_break(text):
-    return re.sub(r'\\n', '\n', text)
-    
+default_csv = 'data.csv'
+
+def get_file_from_google():
+    pass
+    #return csv from google 
+
+game_csv = default_csv
+
 def csv_to_scenarios(csv_file, default_font = 'ogre'):
     """Read CSV with scenarios, and loop over them to create scenarios and keep track of them in the scenario_index. (optional) Choose default pyfiglet font."""
     with open(csv_file) as file:
@@ -104,9 +111,7 @@ def csv_to_scenarios(csv_file, default_font = 'ogre'):
             print(scenario_index[dynamic_name].get_all())
 
 # Populate the Scenarios from the CSV!!!
-csv_to_scenarios('data.csv')
-    
-print(unescape_line_break('This is a choose your own adventure game\\nHere are the rules...'))
+csv_to_scenarios(game_csv)
 print(keyword_index)
 
 class Character:

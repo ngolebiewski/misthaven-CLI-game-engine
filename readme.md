@@ -20,8 +20,15 @@
 - Make it look cool, use pyfiglet for display font.
 
 ## How to make
+
 - See CSV file for template: `data.csv`
 - Must include a row with name "Intro" to kick off the story
+
+## Tech/Libraries Used
+
+- Python 3.13
+- PyFiglet
+- PyTest
 	
 ## See the Docs
 
@@ -29,5 +36,6 @@
 
 ## Note to self:
 - `pip3 freeze > requirements.txt`
+- `source venv/bin/activate`
 
 ![Intro Screen](images/book_cover.png)
