@@ -6,6 +6,7 @@ import game
 
 #set this to your game title
 game_title = 'Misthaven'
+player = game.Character()
 
 # TODO: Refator functions to return the sets of strings, rather than print as side effect
 def title_sequence():
@@ -21,17 +22,16 @@ def player_setup():
     clear_screen()
     name = input("Dear Player, What is your name? ")
     clear_screen()
-    player = game.Character(name) 
+    player.update_name(name) 
     print(ascii_txt(f"Welcome {player.get_name()}, your adventure awaits...", 'yellow', 'ogre'))
     print("This is how you play:\n1. Type in any of the CAPITALIZED words in the scene's options to move forward in the choose-your-own-adventure story.\n2. Other options include 'quit' and 'help' and 'status.\n3. Enjoy!\n\n")
     print(ascii_txt(f"Options", 'yellow', "Mini"))
     print("Are you ready to play? YES/NO")
     input("> ")
     clear_screen()
-    return player
 
 # TODO: Break engine up into discrete parts/either functions or as an object with methods, TBD
-def engine(player):
+def engine():
     """The Choose Your Own Adventure Game Engine, takes in a Player object as an argument"""
     scene = game.scenario_index['intro']
     game_over = False
@@ -83,14 +83,14 @@ def game_over_default(player):
     if opt.startswith("y"):
         player.reset_score()
         engine(player)
-        game_over_default(player)
+        game_over_default()
     exit(0)
 
 def main():
     title_sequence()
-    player = player_setup()
-    engine(player)
-    game_over_default(player)
+    player_setup()
+    engine()
+    game_over_default()
     
 if __name__ == "__main__":
     main()

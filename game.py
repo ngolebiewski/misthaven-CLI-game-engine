@@ -115,7 +115,7 @@ csv_to_scenarios(game_csv)
 print(keyword_index)
 
 class Character:
-    def __init__(self, name):
+    def __init__(self, name="Yaag"):
         self.name = name
         self.score = 0
         self.health = 100
@@ -129,6 +129,9 @@ class Character:
     def get_score(self):
         return self.score
     
+    def update_name(self, name):
+        self.name = name
+        
     def update_health(self, num):
         self.health += num
         
